@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Dict
 
 import aiohttp
 
@@ -25,9 +25,9 @@ class AiohttpClient:
         return cls.session
 
 
-async def get_request(session, url, params):
+async def get_request(session: aiohttp.ClientSession, url: str, params: Dict):
     async with session.get(url, params=params) as response:
         if response.status == 200:
             return await response.json()
         else:
-            return {"status": response.status}
+            return {"status": response.status, "reason": response.text}

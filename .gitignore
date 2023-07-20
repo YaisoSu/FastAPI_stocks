@@ -185,4 +185,4 @@ crashlytics-build.properties
 fabric.properties
 
 # Custom
-/src/config.py
+/src/keys.py

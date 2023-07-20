@@ -12,7 +12,7 @@ router = APIRouter(
 
 @router.get("/forex_chart/")
 async def forex_chart():
-    days_to_display = 2
+    days_to_display = 14
     dates = [(datetime.now() - timedelta(days=days_to_display) + timedelta(n)).strftime("%Y-%m-%d")
              for n in range(days_to_display)]
     eur = "EUR"
@@ -39,5 +39,4 @@ async def forex_chart():
     )
 
     fig = go.Figure(data=data, layout=layout)
-
     return Response(content=fig.to_html(), media_type="text/html")
